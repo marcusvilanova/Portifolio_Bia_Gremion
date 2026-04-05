@@ -94,7 +94,7 @@
     flex-direction: column;
     justify-content: center;
     padding-bottom: 5vh;
-    text-align: left; // Forced left for magazine feel
+    text-align: left; 
 
     .content-inner {
         max-width: 620px;
@@ -104,11 +104,11 @@
   .value-label {
     display: block;
     font-family: var(--font-body);
-    font-size: 1.4rem; // Command presence
+    font-size: 1.4rem; 
     letter-spacing: 0.45em;
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 0.8rem; // Tightened from 1.8rem
+    margin-bottom: 0.8rem; 
     font-weight: 600;
   }
 
@@ -116,11 +116,11 @@
     font-size: clamp(2.5rem, 6vw, 5rem);
     color: var(--color-primary);
     font-weight: 300;
-    margin-bottom: 1.5rem; // Tightened from 3rem
+    margin-bottom: 1.5rem; 
     line-height: 0.9;
     letter-spacing: -0.04em;
     text-transform: uppercase;
-    clip-path: inset(100% 0 0 0); // Prepared for GSAP Reveal
+    clip-path: inset(100% 0 0 0); 
     will-change: clip-path;
   }
   
@@ -152,7 +152,7 @@
     opacity: 1;
     transition: none !important;
 
-    &::after { // Decorative structural lines
+    &::after { 
         content: '';
         position: absolute;
         top: 3rem;
@@ -182,11 +182,10 @@
         max-width: 550px;
         height: auto;
         aspect-ratio: 9/16;
-        background: transparent; // Removed white background
-        box-shadow: none; // Removed box shadow
-        padding: 0; // Removed extra padding
-        border-radius: 0; // Removed border radius
-    }
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
 
         &::before {
             content: '';
@@ -295,7 +294,6 @@
   }
 }
 
-// RESPONSIVE OVERRIDES (MAGAZINE FEEL ON ALL SCREENS)
 @media (max-width: 1200px) {
     .value-item {
         grid-template-columns: 1fr 1fr;
@@ -330,7 +328,7 @@
 
     .editorial-media-frame {
         width: 100%;
-        max-width: 400px !important; // Controlled size on mobile/tablet
+        max-width: 400px !important;
         height: auto;
         
         &::after { display: none; }
