@@ -30,10 +30,10 @@ export const Hero = () => {
             const bgTl = gsap.timeline({ repeat: -1 });
 
             bgImages.forEach((img, index) => {
-                const isDarkDress = index === 0;
-                const textColor = isDarkDress ? "#ffffff" : "#1a1a1a";
-                const subColor = isDarkDress ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.7)";
-                const sidebarColor = isDarkDress ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.3)";
+                // High-Fidelity White synchronization for all slides as requested
+                const textColor = "#ffffff";
+                const subColor = "rgba(255,255,255,0.9)";
+                const sidebarColor = "rgba(255,255,255,0.6)";
 
                 if (index !== 0) {
                     gsap.set(img, { opacity: 0, scale: 1.1 });
@@ -75,7 +75,7 @@ export const Hero = () => {
                     ease: "power2.inOut" 
                 }, index * 6 + 0.5)
                 .to('.editorial-subtitle .dot', {
-                    backgroundColor: isDarkDress ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.2)",
+                    backgroundColor: "rgba(255,255,255,0.4)",
                     duration: 1.5
                 }, index * 6 + 0.5);
             });
