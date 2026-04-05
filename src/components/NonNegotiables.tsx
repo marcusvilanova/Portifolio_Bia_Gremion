@@ -117,50 +117,76 @@ export const NonNegotiables = () => {
             const items = stackRef.current?.querySelectorAll('.value-item');
             if (!items || items.length === 0) return;
 
-            // Initial state: hide all items
-            gsap.set(items, { autoAlpha: 0, yPercent: 30 });
-            // Show only the first one immediately
-            gsap.set(items[0], { autoAlpha: 1, yPercent: 0 });
+            // Initial state: hide all items and their layers for a "Viscous Reveal"
+            items.forEach((item) => {
+                const number = item.querySelector('.value-background-number');
+                const content = item.querySelector('.content-inner');
+                const title = item.querySelector('.value-title');
+                const media = item.querySelector('.editorial-media-frame');
+
+                gsap.set(item, { autoAlpha: 0 });
+                gsap.set(number, { autoAlpha: 0, scale: 0.85, yPercent: 10 });
+                gsap.set(content, { autoAlpha: 0, yPercent: 20 });
+                gsap.set(title, { clipPath: 'inset(100% 0 0 0)' });
+                gsap.set(media, { autoAlpha: 0, scale: 1.1, skewX: 8, xPercent: 10 });
+            });
+
+            // Show first item immediately with its initial state
+            const first = items[0];
+            gsap.set(first, { autoAlpha: 1 });
+            gsap.set(first.querySelector('.value-background-number'), { autoAlpha: 0.8, scale: 1, yPercent: 0 });
+            gsap.set(first.querySelector('.content-inner'), { autoAlpha: 1, yPercent: 0 });
+            gsap.set(first.querySelector('.value-title'), { clipPath: 'inset(0% 0 0 0)' });
+            gsap.set(first.querySelector('.editorial-media-frame'), { autoAlpha: 1, scale: 1, skewX: 0, xPercent: 0 });
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: `+=${items.length * 200}%`, // Increased scroll distance for more "hold" time
+                    end: `+=${items.length * 300}%`, // Deeper scroll for viscous feel
                     pin: true,
-                    scrub: 1,
+                    scrub: 1.2, // Smoother, more "heavy" scrub
                     anticipatePin: 1,
                 }
             });
 
-            // Iterate through items for a clean cross-fade sequence
+            // EXPERT MOTION: Layered Parallax Sequence
             items.forEach((item, index) => {
                 if (index === 0) {
-                    // Item 0 is already visible, just add a 'hold' for it
-                    tl.to({}, { duration: 1.5 }); 
+                    tl.to({}, { duration: 2 }); // Initial hold
                     return;
                 };
 
+                const prevItem = items[index - 1];
                 const labelEnter = `step-enter-${index}`;
                 
-                // 1. Fade OUT the previous item COMPLETELY
-                tl.to(items[index - 1], {
-                    autoAlpha: 0,
-                    yPercent: -20,
-                    duration: 1,
-                    ease: 'power2.inOut',
-                }, labelEnter)
+                // 1. EXIT: Prev Item (Layers disperse in parallax)
+                tl.to(prevItem.querySelector('.value-background-number'), { autoAlpha: 0, yPercent: -20, scale: 1.1, duration: 1.5 }, labelEnter)
+                  .to(prevItem.querySelector('.content-inner'), { autoAlpha: 0, yPercent: -30, duration: 1 }, labelEnter)
+                  .to(prevItem.querySelector('.editorial-media-frame'), { autoAlpha: 0, xPercent: -15, scale: 0.9, skewX: -5, duration: 1.5 }, labelEnter)
+                  .to(prevItem, { autoAlpha: 0, duration: 0.5 }, `${labelEnter}+=1`) // Clean clip
                 
-                // 2. Contemporaneously, fade IN the current item
-                .to(item, {
-                    autoAlpha: 1,
-                    yPercent: 0,
-                    duration: 1,
-                    ease: 'power2.out',
-                }, labelEnter)
+                // 2. ENTER: Current Item (Slices and skewed reveals)
+                  .to(item, { autoAlpha: 1, duration: 0.1 }, labelEnter) // Reveal base
+                  .to(item.querySelector('.value-background-number'), { 
+                      autoAlpha: 0.8, scale: 1, yPercent: 0, 
+                      duration: 2, ease: "power2.out" 
+                  }, labelEnter)
+                  .to(item.querySelector('.editorial-media-frame'), { 
+                      autoAlpha: 1, scale: 1, skewX: 0, xPercent: 0, 
+                      duration: 2, ease: "expo.out" 
+                  }, `${labelEnter}+=0.2`)
+                  .to(item.querySelector('.value-title'), { 
+                      clipPath: 'inset(0% 0 0 0)', 
+                      duration: 1.5, ease: "power4.out" 
+                  }, `${labelEnter}+=0.5`)
+                  .to(item.querySelector('.content-inner'), { 
+                      autoAlpha: 1, yPercent: 0, 
+                      duration: 1.5, ease: "power2.out" 
+                  }, `${labelEnter}+=0.8`)
                 
-                // 3. Add a "HOLD" duration so users can read
-                .to({}, { duration: 2 });
+                // 3. HOLD: Viscous reading time
+                  .to({}, { duration: 3 });
             });
 
         }, sectionRef);
