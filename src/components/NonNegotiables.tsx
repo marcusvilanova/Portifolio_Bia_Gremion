@@ -179,36 +179,45 @@ export const NonNegotiables = () => {
 
                 <div className="values-stack" ref={stackRef}>
                     {VALUES.map((item, index) => (
-                        <div key={index} className={`value-item ${item.isDemographics ? 'full-width-item' : ''}`}>
-                            
+                        <div 
+                            key={index} 
+                            className={`value-item ${item.isDemographics ? 'full-width-item' : ''} layout-${index === 0 ? 'social' : 'editorial'}`}
+                        >
+                            {/* EXPERT UI: Background Numbering Artifact */}
+                            <div className="value-background-number">{item.number}</div>
+
                             <div className="value-content-side">
-                                <span className="value-number">{item.number}</span>
-                                <h3 className="value-title">{item.title}</h3>
-                                <p className="value-text">{item.text}</p>
-                                {item.isDemographics && item.demographics && <MetricsDisplay data={item.demographics} />}
+                                <div className="content-inner reveal-up">
+                                    <span className="value-label">Diferencial {item.number}</span>
+                                    <h3 className="value-title">{item.title}</h3>
+                                    <p className="value-text">{item.text}</p>
+                                    {item.isDemographics && item.demographics && <MetricsDisplay data={item.demographics} />}
+                                </div>
                             </div>
 
                             <div className="value-media-side">
-                                {item.videoSrc ? (
-                                    <div className="value-video-wrapper">
-                                        <LazyVideo 
-                                            src={item.videoSrc}
-                                            className="value-gif-video"
-                                            autoPlay loop muted playsInline
-                                        />
-                                    </div>
-                                ) : item.imageSrc ? (
-                                    <div className="value-video-wrapper">
-                                            <img 
-                                                src={item.imageSrc} 
-                                                alt={item.title}
+                                <div className="editorial-media-frame">
+                                    {item.videoSrc ? (
+                                        <div className="value-video-wrapper">
+                                            <LazyVideo 
+                                                src={item.videoSrc}
                                                 className="value-gif-video"
-                                                style={{ objectFit: 'contain' }}
-                                                loading="lazy"
-                                                decoding="async"
+                                                autoPlay loop muted playsInline
                                             />
-                                    </div>
-                                ) : null}
+                                        </div>
+                                    ) : item.imageSrc ? (
+                                        <div className="value-video-wrapper">
+                                                <img 
+                                                    src={item.imageSrc} 
+                                                    alt={item.title}
+                                                    className="value-gif-video"
+                                                    style={{ objectFit: 'cover' }}
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                />
+                                        </div>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
                     ))}
