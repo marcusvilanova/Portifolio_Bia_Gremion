@@ -44,8 +44,8 @@ export interface ValueItem {
     number: string;
     title: string;
     text: string;
-    videoSrc?: string;
-    imageSrc?: string;
+    highlight?: string;
+    subHighlight?: string;
     isDemographics?: boolean;
     demographics?: DemographicsData;
 }
@@ -120,26 +120,47 @@ export const VALUES: ValueItem[] = [
     {
       number: "01",
       title: "Identificação que gera conversão.",
-      text: "Com mais de 80 mil vozes orgânicas, minha relação com o público é baseada em espelhamento. As mulheres não apenas assistem; elas compram o que eu indico porque se identificam com a minha jornada e confiam na minha curadoria.",
-      videoSrc: "/video-comentarios-engajamento.mp4"
+      highlight: "80K+",
+      subHighlight: "Vozes Orgânicas",
+      text: "Minha relação com o público é baseada em espelhamento. As mulheres não apenas assistem; elas compram o que eu indico porque se identificam com a minha jornada e confiam na minha curadoria."
     },
     {
       number: "02",
-      title: "DOMÍNIO TÉCNICO & CURADORIA",
-      text: "Formada pela Escola Madre, trago o olhar técnico da maquiagem para cada publis de skincare, beleza e acessórios. Entendo o produto, a aplicação e o resultado visual exigido pelo mercado premium.",
-      imageSrc: "/images/portfolio/44.webp"
+      title: "Domínio Técnico & Curadoria.",
+      highlight: "BEAUTY",
+      subHighlight: "Formada Escola Madre",
+      text: "Trago o olhar técnico da maquiagem para cada publis de skincare e acessórios. Entendo o produto, a aplicação e o resultado visual exigido pelo mercado premium."
     },
     {
       number: "03",
-      title: "Comunicação e Estratégia de Marketing.",
-      text: "Como graduanda em Marketing, entendo os bastidores da influência. Minha entrega une a criatividade da criadora com o embasamento técnico de quem sabe ler briefings e transformar tendências em resultados.",
-      imageSrc: "/bia-maquiagem-2.png"
+      title: "Estratégia e Marketing.",
+      highlight: "ESTRATÉGIA",
+      subHighlight: "Graduanda em Marketing",
+      text: "Entendo os bastidores da influência. Minha entrega une a criatividade da criadora com o embasamento técnico de quem sabe ler briefings e transformar tendências em resultados."
     },
     {
         number: "04",
-        title: "ESTRATÉGIA E MERCADO PLUS SIZE",
-        text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra. Quando uma mulher vê um corpo como o dela sendo tratado com excelência em uma campanha, ela não compra apenas o produto: ela consome a sensação de pertencimento e dignidade. É por isso que a representatividade deixou de ser apenas uma pauta; hoje, é a estratégia de conexão e conversão mais inteligente que uma marca pode adotar.",
-        imageSrc: "/images/portfolio/29.webp"
+        title: "Mercado Plus Size.",
+        highlight: "R$ 10B",
+        subHighlight: "Movimentação Anual",
+        text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra.",
+        isDemographics: true,
+        demographics: {
+            brands: ["DOVE", "PANTENE", "MAC", "SKALA", "VULT", "UBER", "CONVERSE", "SPOTIFY"],
+            reach: [
+                { label: "MENSAL", value: "850K" },
+                { label: "ENGAL", value: "4.2%" }
+            ],
+            gender: [
+                { label: "Feminino", value: "92%" },
+                { label: "Masculino", value: "8%" }
+            ],
+            age: [
+                { label: "18-24", value: "28%" },
+                { label: "25-34", value: "46%" },
+                { label: "35-44", value: "15%" }
+            ]
+        }
     }
 ];
 

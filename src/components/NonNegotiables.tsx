@@ -207,42 +207,26 @@ export const NonNegotiables = () => {
                     {VALUES.map((item, index) => (
                         <div 
                             key={index} 
-                            className={`value-item ${item.isDemographics ? 'full-width-item' : ''} layout-${index === 0 ? 'social' : 'editorial'}`}
+                            className={`value-item ${item.isDemographics ? 'is-demographics-slide' : ''} data-monolith-layout`}
                         >
-                            {/* EXPERT UI: Background Numbering Artifact */}
+                            {/* EXPERT UI: Background Monumental Numbering Artifact */}
                             <div className="value-background-number">{item.number}</div>
 
-                            <div className="value-content-side">
-                                <div className="content-inner reveal-up">
-                                    <span className="value-label">Diferencial {item.number}</span>
-                                    <h3 className="value-title">{item.title}</h3>
-                                    <p className="value-text">{item.text}</p>
-                                    {item.isDemographics && item.demographics && <MetricsDisplay data={item.demographics} />}
+                            <div className="value-monolith-grid">
+                                <div className="highlight-column">
+                                    <div className="highlight-artifact reveal-on-scroll">
+                                        <span className="huge-stat">{item.highlight}</span>
+                                        <span className="stat-label">{item.subHighlight}</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="value-media-side">
-                                <div className="editorial-media-frame">
-                                    {item.videoSrc ? (
-                                        <div className="value-video-wrapper">
-                                            <LazyVideo 
-                                                src={item.videoSrc}
-                                                className="value-gif-video"
-                                                autoPlay loop muted playsInline
-                                            />
-                                        </div>
-                                    ) : item.imageSrc ? (
-                                        <div className="value-video-wrapper">
-                                                <img 
-                                                    src={item.imageSrc} 
-                                                    alt={item.title}
-                                                    className="value-gif-video"
-                                                    style={{ objectFit: 'cover' }}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                        </div>
-                                    ) : null}
+                                <div className="content-column">
+                                    <div className="content-inner reveal-up">
+                                        <span className="value-label">Diferencial {item.number}</span>
+                                        <h3 className="value-title">{item.title}</h3>
+                                        <p className="value-text">{item.text}</p>
+                                        {item.isDemographics && item.demographics && <MetricsDisplay data={item.demographics} />}
+                                    </div>
                                 </div>
                             </div>
                         </div>
