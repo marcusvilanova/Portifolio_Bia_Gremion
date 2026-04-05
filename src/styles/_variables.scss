@@ -1,0 +1,111 @@
+:root {
+  // Brand Colors - High-Fashion Editorial with Warm Accent
+  --color-primary: #1A1A1A; /* Deep Graphite/Black for main text/titles */
+  --color-primary-light: #444444; /* Soft grey for secondary text */
+  --color-secondary: #000000; /* Absolute black */
+  --color-accent: #E60000; /* Pure Carmine Red — forte, editorial, luxo */
+  --color-accent-soft: rgba(230, 0, 0, 0.15); /* Vermelho sutil para backgrounds */
+  --color-accent-hover: #CC0000; /* Vermelho mais profundo para hover */
+  
+  --color-bg: #FFFFFF; /* Pristine White */
+  --color-text: #1A1A1A; 
+  --color-text-light: #777777; /* Light gray */
+  
+  // Removed Glassmorphism. Using stark borders if needed.
+  --color-glass-bg: transparent;
+  --color-glass-border: rgba(0, 0, 0, 0.1);
+  --shadow-glass: none;
+  
+  // Typography Architecture - Elite Fashion
+  --font-heading: 'Cinzel', serif;
+  --font-serif-delicate: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-signature: 'Pinyon Script', cursive;
+  
+  // Strict Typographic Scale (Refined for better Mobile Harmony)
+  --type-heading-display: clamp(1.4rem, 7vw, 7rem);   /* Reduced min from 1.8rem */
+  --type-heading-1: clamp(1.2rem, 5vw, 5rem);       /* Reduced min from 1.5rem */
+  --type-heading-2: clamp(1rem, 3.5vw, 3rem);       /* Reduced min from 1.2rem */
+  --type-heading-3: clamp(0.9rem, 2vw, 2.2rem);     /* Reduced min from 1rem */
+  
+  --type-body-lg: clamp(0.85rem, 1.6vw, 1.6rem);    
+  --type-body-base: clamp(0.85rem, 1.1vw, 1.25rem);    
+  --type-body-sm: clamp(0.75rem, 0.9vw, 1rem);        
+  
+  --type-label: clamp(0.6rem, 0.8vw, 0.85rem);      /* Purely utilitarian (Tags, Comp Card) */
+  
+  // Typographic Variables (Pre-assembled rules for consistency)
+  --letter-spacing-heading: -0.02em;
+  --letter-spacing-label: 0.3em; 
+  
+  // Layout & Spacing - HUGE MARGINS for breathability
+  --max-width: 1600px;
+  --spacing-sm: 1rem;
+  --spacing-md: 3rem;
+  --spacing-lg: 6rem;
+  --spacing-xl: clamp(6rem, 8vw, 10rem);  // Increased from 4rem-6rem
+  --spacing-xxl: clamp(10rem, 12vw, 15rem); // Increased from 7rem-10rem
+
+  @media (max-width: 768px) {
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 3.5rem;
+  }
+
+  @media (max-width: 480px) {
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 3rem;
+  }
+  
+  // Sharp Corners only
+  --radius-organic-1: 0;
+  --radius-organic-2: 0;
+  
+  // Transitions - Slow and elite
+  --transition-smooth: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image: none;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+// FILM GRAIN EFFECT (Cinematic Texture)
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04; // Very subtle
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* GLOBAL ICON SAFETY */
+svg {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  svg {
+    width: auto !important;
+    max-height: 28px !important; // Stricter constraint
+  }
+}
+
+// Remove wavy dividers
+.wave-divider {
+  display: none !important;
+}

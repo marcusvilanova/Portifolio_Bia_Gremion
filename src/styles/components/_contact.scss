@@ -1,0 +1,209 @@
+@use '../variables';
+
+.monumental-footer {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: var(--spacing-lg) 0 2rem 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-md) 0 1rem 0;
+  }
+}
+
+.footer-content {
+  position: relative;
+  z-index: 10; // Above background text
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  flex-grow: 1;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: auto; // Pushes bottom down
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+.footer-left {
+  .minimal-label {
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .footer-statement {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-1);
+    line-height: 1;
+    color: var(--color-primary);
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-heading);
+  }
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  
+  .box-title {
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+// MAGNETIC BUTTONS
+.magnetic-wrap {
+  display: inline-block;
+  padding: 1rem; // Give area for hover detection
+  margin: -1rem; // Offset padding visually
+  border-radius: 50%;
+  cursor: pointer;
+  
+  .magnetic-target {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    text-decoration: none;
+  }
+}
+
+.email-wrap {
+  .email-link {
+    font-family: var(--font-body);
+    font-size: var(--type-heading-3);
+    font-weight: 300;
+    color: var(--color-primary);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-accent);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform-origin: right;
+    }
+    
+    &:hover {
+      color: var(--color-accent);
+      &::after {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+.icon-wrap {
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-primary);
+    
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    span {
+      font-family: var(--font-body);
+      font-size: var(--type-label);
+      letter-spacing: var(--letter-spacing-label);
+    }
+  }
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 6rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  
+  .footer-credits p {
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-label);
+    margin: 0;
+  }
+  
+  .back-to-top {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    color: var(--color-text-light);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-label);
+    padding: 0;
+    transition: color 0.4s ease;
+    
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+}
+
+// MONUMENTAL BACKGROUND TEXT
+.bg-monumental {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 20vw, 25rem);
+  font-weight: 400;
+  color: var(--color-primary);
+  white-space: nowrap;
+  pointer-events: none; 
+  margin: 0;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  opacity: 0; 
+
+  @media (max-width: 480px) {
+    font-size: 5rem;
+  }
+}

@@ -1,0 +1,69 @@
+@use '../variables';
+
+.fashion-film-section {
+  width: 100vw;
+  height: 300vh; // Track for the scroll experience
+  position: relative;
+  background-color: var(--color-bg); // Match site bg to avoid borders
+  margin: 0;
+
+  @media (max-width: 768px) {
+    height: 180vh; // Moderated for mobile
+  }
+}
+
+.film-container {
+  width: 100%;
+  height: 100vh; // Stick to viewport height
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.editorial-video {
+  width: 100%;
+  height: 120%; // Increased for safer parallax coverage
+  object-fit: cover; 
+  object-position: center;
+  filter: grayscale(100%) contrast(1.1);
+  opacity: 1;
+}
+
+.film-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  mix-blend-mode: difference;
+  
+  .film-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 10vw, 8rem);
+    color: var(--color-bg);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+}
+
+// Mask Reveal Utility Logic (used here and globally)
+.mask-reveal {
+  overflow: hidden;
+  display: block; // Or inline-block depending on use case
+  
+  .mask-inner {
+    display: inline-block;
+    transform: translateY(110%); // Hidden by default below the wrapper
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  
+  &.is-revealed .mask-inner {
+    transform: translateY(0);
+  }
+}

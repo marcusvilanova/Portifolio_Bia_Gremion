@@ -1,0 +1,126 @@
+@use '../variables';
+
+.press-section {
+  background-color: var(--color-bg);
+  padding: var(--spacing-xxl) 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.press-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.press-header {
+  margin-bottom: var(--spacing-xl);
+  
+  .section-label {
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    letter-spacing: var(--letter-spacing-label);
+    color: var(--color-text-light);
+    display: block;
+    margin-bottom: 2rem;
+  }
+}
+
+.press-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.press-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: padding-left 0.4s ease, background-color 0.4s ease;
+
+  &:first-child {
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  &:hover {
+    padding-left: 2rem; // Slide text to the right organically
+    background-color: #fcfcfc;
+
+    .press-icon {
+      transform: scale(1.1) rotate(45deg);
+    }
+  }
+
+  .press-source {
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    letter-spacing: var(--letter-spacing-label);
+    font-weight: 500;
+    width: 20%;
+    color: var(--color-text-light);
+  }
+
+  .press-content {
+    width: 60%;
+    
+    .press-article-title {
+      font-family: var(--font-heading);
+      font-size: var(--type-heading-2);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .press-desc {
+      font-family: var(--font-body);
+      font-size: var(--type-body-base);
+      line-height: 1.5;
+      color: var(--color-text-light);
+      max-width: 600px;
+    }
+  }
+
+  .press-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: transform 0.4s ease;
+    color: var(--color-primary);
+    
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .press-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 0;
+
+    &:hover {
+      padding-left: 0;
+    }
+
+    .press-source {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .press-content {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .press-icon {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+}

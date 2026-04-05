@@ -1,0 +1,59 @@
+﻿
+> portif-lio-bia@0.0.0 build
+> tsc -b && vite build
+
+npm : [33mYou are using Node.js 20.17.0. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js 
+version.[39m
+No linha:1 caractere:1
++ npm run build 2>&1 | Out-File -FilePath build_error.txt -Encoding utf ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([33mYou are us...s version.[39m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mÔ£ô[39m 23 modules transformed.
+[31mÔ£ù[39m Build failed in 3.68s
+[31merror during build:
+[31m[vite:css] [sass] @use rules must be written before any other rules.
+   ÔòÀ
+13 Ôöé @use 'components/navbar';
+   Ôöé ^^^^^^^^^^^^^^^^^^^^^^^^
+   ÔòÁ
+  src\styles\main.scss 13:1  root stylesheet[31m
+file: [36mC:/Users/marcu/OneDrive/├ürea de 
+Trabalho/Portifolio_Bia_Gremion-main/Portifolio_Bia_Gremion-main/src/styles/main.scss[31m
+[33m
+[sass] @use rules must be written before any other rules.
+   ÔòÀ
+13 Ôöé @use 'components/navbar';
+   Ôöé ^^^^^^^^^^^^^^^^^^^^^^^^
+   ÔòÁ
+  src\styles\main.scss 13:1  root stylesheet
+[31m
+Error: @use rules must be written before any other rules.
+   ÔòÀ
+13 Ôöé @use 'components/navbar';
+   Ôöé ^^^^^^^^^^^^^^^^^^^^^^^^
+   ÔòÁ
+  src\styles\main.scss 13:1  root stylesheet
+    at Object.wrapException (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:2337:47)
+    at ScssParser0.error$3 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:117883:17)
+    at ScssParser0.error$2 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:117888:19)
+    at ScssParser0.atRule$2$root (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:124213:19)
+    at ScssParser0._stylesheet0$_statement$1$root (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:123810:22)
+    at StylesheetParser_parse__closure0.call$0 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:127757:17)
+    at ScssParser0.statements$1 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:119339:30)
+    at StylesheetParser_parse_closure0.call$0 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:127743:23)
+    at ScssParser0.wrapSpanFormatException$1$1 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:117914:25)
+    at ScssParser0.wrapSpanFormatException$1 (C:\Users\marcu\OneDrive\├ürea de 
+Trabalho\Portifolio_Bia_Gremion-main\Portifolio_Bia_Gremion-main\node_modules\sass\sass.dart.js:117971:19)[39m

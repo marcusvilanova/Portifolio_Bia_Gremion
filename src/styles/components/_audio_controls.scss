@@ -1,0 +1,79 @@
+.audio-controls-wrap {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+.audio-toggle {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.sound-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  width: 20px;
+}
+
+.wave {
+  display: block;
+  width: 2px;
+  background-color: var(--color-accent);
+  transition: height 0.3s ease, background-color 0.3s ease;
+  
+  &.wave-1 { height: 40%; }
+  &.wave-2 { height: 80%; }
+  &.wave-3 { height: 60%; }
+  &.wave-4 { height: 90%; }
+
+  &.playing {
+    animation: sound-wave-anim 1s ease-in-out infinite alternate;
+    &.wave-1 { animation-delay: 0.1s; }
+    &.wave-2 { animation-delay: 0.3s; }
+    &.wave-3 { animation-delay: 0.2s; }
+    &.wave-4 { animation-delay: 0.4s; }
+  }
+
+  &.paused {
+    height: 2px !important;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.audio-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text);
+  font-weight: 400;
+  text-transform: uppercase;
+  
+  .muted & {
+    color: var(--color-text-light);
+  }
+}
+
+@keyframes sound-wave-anim {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}

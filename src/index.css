@@ -1,0 +1,50 @@
+/* Minimal Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --vh-100: 100vh;
+}
+
+@supports (height: 100svh) {
+  :root {
+    --vh-100: 100svh;
+  }
+}
+
+html, body {
+  min-height: 100%;
+  min-height: var(--vh-100);
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: initial !important; /* Required for Lenis */
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}

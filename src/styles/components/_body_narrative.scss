@@ -1,0 +1,210 @@
+@use '../variables';
+
+.body-narrative {
+  position: relative;
+  width: 100vw;
+  background-color: #0d0d0d;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.video-fullscreen-narrative {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #000;
+
+  // Background layers
+  .bg-video-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    .body-bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-cinematic-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: 2;
+
+      &.heavy {
+        background: rgba(0,0,0,0.65);
+      }
+    }
+  }
+
+  // Foreground Content
+  .cinematic-content-flow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10vw;
+
+    .content-block {
+      position: absolute;
+      max-width: 800px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      visibility: hidden; // GSAP handles this
+
+      &.center {
+        text-align: center;
+      }
+
+      .phase-label {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .cinematic-title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.5rem, 8vw, 6.5rem); // Reduced minimum
+        color: #ffffff;
+        line-height: 1;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        margin: 0;
+
+        @media (max-width: 480px) {
+          font-size: 2rem;
+        }
+      }
+
+      .cinematic-quote {
+        font-family: var(--font-heading);
+        font-size: clamp(1.1rem, 3.5vw, 2.5rem); // Reduced minimum
+        color: #ffffff;
+        line-height: 1.2;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 2rem;
+      }
+
+      .cinematic-copy {
+        font-family: var(--font-heading);
+        font-size: clamp(0.75rem, 1vw, 0.9rem);
+        line-height: 2;
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 700px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+
+        strong {
+          color: #fff;
+          font-weight: 600;
+        }
+      }
+
+      .music-toggle-minimal {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0.8rem 1.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #fff;
+          color: #fff;
+        }
+      }
+
+      .cinematic-cta {
+        display: inline-block;
+        padding: 1.2rem 3rem;
+        background-color: #fff;
+        color: #000;
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-top: 2rem;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &:hover {
+          background-color: var(--color-primary);
+          color: #fff;
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .video-fullscreen-narrative {
+    .cinematic-content-flow {
+      padding: 0 8vw;
+      
+      .content-block {
+        gap: 1.25rem;
+        
+        .cinematic-title {
+          font-size: 7.5vw; // Responsive scale
+          letter-spacing: 0.02em;
+        }
+
+        .cinematic-quote {
+          font-size: 1.2rem;
+          letter-spacing: 0.08em;
+          margin-bottom: 1rem;
+        }
+
+        .cinematic-copy {
+          font-size: 0.85rem;
+          letter-spacing: 0.1em;
+          line-height: 1.7;
+          max-width: 100%;
+        }
+
+        .cinematic-cta {
+          padding: 1rem 1.8rem;
+          font-size: 0.7rem;
+          margin-top: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .video-fullscreen-narrative {
+    .cinematic-content-flow {
+      .content-block {
+        .cinematic-title {
+          font-size: 10vw;
+        }
+        .cinematic-quote {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

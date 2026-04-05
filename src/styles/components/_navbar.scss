@@ -1,0 +1,229 @@
+@use '../variables';
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.8rem 0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &.scrolled {
+    padding: 1rem 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  z-index: 1001;
+  flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
+}
+
+.logo-monogram {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: #FFFFFF;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1;
+  transition: color 0.4s ease;
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+
+  .scrolled & {
+    color: var(--color-text);
+  }
+}
+
+.logo-name {
+  font-family: var(--font-body);
+  font-size: var(--type-label);
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.85);
+  text-transform: none; 
+  border-left: 1px solid rgba(255,255,255,0.2);
+  padding-left: 15px;
+  font-weight: 300;
+  transition: all 0.4s ease;
+  
+  @media (max-width: 768px) {
+    display: none; // Hide extra text on mobile to avoid overlap
+  }
+
+  .scrolled & {
+    color: var(--color-text);
+    border-left-color: rgba(0,0,0,0.1);
+    opacity: 0.6;
+  }
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 3rem;
+  
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85); // Branco sobre o hero escuro
+  text-decoration: none;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.4s ease;
+  padding-bottom: 5px;
+  white-space: nowrap;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  &:hover {
+    color: #FFFFFF;
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.active {
+    color: var(--color-accent) !important;
+    &::after {
+      width: 100%;
+    }
+  }
+
+  // Escurece conforme faz scroll
+  .scrolled & {
+    color: var(--color-text);
+    &.active { color: var(--color-accent); }
+    &:hover { color: var(--color-accent); }
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1010;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: #FFFFFF; // Visible over hero
+    transition: all 0.3s ease;
+    transform-origin: left center;
+  }
+
+  .scrolled & span {
+    background-color: var(--color-text); // Visible over scrolled bg
+  }
+
+  &.open {
+    span {
+      background-color: var(--color-primary);
+      &:nth-child(1) { transform: rotate(45deg); }
+      &:nth-child(2) { opacity: 0; }
+      &:nth-child(3) { transform: rotate(-45deg); }
+    }
+  }
+}
+
+// Mobile Nav Overlay
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  
+  a {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-primary);
+    transition: opacity 0.4s ease;
+    text-decoration: none;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

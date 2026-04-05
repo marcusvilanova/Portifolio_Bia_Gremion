@@ -1,0 +1,101 @@
+@use '../variables';
+
+.parallax-divider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+}
+
+.pd-background {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%; // Taller than the section to allow parallax scrolling
+  z-index: 1;
+
+  .pd-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transition: transform 2s var(--transition-cinematic);
+    filter: brightness(0.85) contrast(1.1); // Refined cinematic look
+  }
+
+  .pd-overlay {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 40%; // Generous height for smooth gradients
+    z-index: 2;
+    pointer-events: none;
+
+    &-top {
+      top: 0;
+      background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.6) 0%, 
+        rgba(0,0,0,0.3) 40%, 
+        transparent 100%
+      );
+    }
+
+    &-bottom {
+      bottom: 0;
+      height: 60%;
+      background: linear-gradient(to top, 
+        #000000 0%, 
+        rgba(0, 0, 0, 0.8) 20%, 
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+  }
+}
+
+.pd-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 var(--spacing-md);
+  
+  .pd-subtitle {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--type-label);
+    letter-spacing: var(--letter-spacing-label);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .pd-title {
+    font-family: var(--font-heading);
+    font-size: var(--type-heading-display);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-heading);
+    text-transform: uppercase;
+  }
+
+  .pd-description {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    font-family: var(--font-body);
+    font-size: var(--type-body-lg);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    animation: fadeIn 2s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

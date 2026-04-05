@@ -1,0 +1,231 @@
+@use '../variables';
+
+// FILM GRAIN EFFECT (Cinematic Texture)
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04; // Very subtle
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* GLOBAL ICON SAFETY */
+svg {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  svg {
+    width: auto;
+    max-height: 32px; // Prevent gigantic icons
+  }
+}
+
+.beauty-pinned-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; // Exact viewport height for pinning
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // 1. Full Screen Background
+  .beauty-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    .beauty-full-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 40%;
+        will-change: transform, filter;
+    }
+
+    .bg-vignette {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+        pointer-events: none;
+    }
+  }
+
+  // 2. Sequential Slides Container
+  .beauty-slides-container {
+    position: relative;
+    z-index: 5;
+    height: 100vh;
+    width: 100%; // Ensure full width
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 8vw;
+
+    @media (max-width: 992px) {
+        padding-left: 0;
+        justify-content: center;
+    }
+    
+    // Smooth Transition Helpers
+    .beauty-hero-slide {
+       width: 100%;
+       left: 0;
+       display: flex;
+       justify-content: center;
+       text-align: center;
+       max-width: 100% !important;
+
+       .monumental-title {
+         font-size: clamp(1.5rem, 9vw, 8rem); // Reduced from clamp(2rem, 12vw, 8rem)
+         line-height: 0.9;
+         text-transform: uppercase;
+         letter-spacing: -0.02em;
+         font-weight: 300; 
+         color: #FFFFFF !important; // Forced White
+         display: flex;
+         flex-direction: column;
+
+         .line-2 {
+           align-self: flex-end;
+           margin-right: 5vw; // Shifted right to clear the background face
+         }
+       }
+    }
+
+    .beauty-slide {
+      position: absolute;
+      top: 50%; 
+      transform: translateY(-50%);
+      max-width: 900px; // Larger for monumental typography
+      opacity: 0;
+      pointer-events: none;
+      &.active { pointer-events: auto; }
+      text-align: left;
+      color: #FFFFFF;
+      padding: 0; // Removing box padding
+      background: none; // REMOVED GLASS
+      backdrop-filter: none; // REMOVED GLASS
+      border-left: none; // Removing box border
+      will-change: transform, opacity;
+
+      @media (max-width: 768px) {
+        max-width: 95%;
+        padding: 0 1.5rem;
+      }
+
+      .minimal-title {
+        font-size: clamp(1.4rem, 7vw, 4rem); // Reduced from clamp(1.8rem, 8vw, 4rem)
+        line-height: 1;
+        margin-bottom: 2rem; 
+        letter-spacing: -0.01em;
+        color: #FFFFFF !important;
+        text-shadow: 0 0 50px rgba(0,0,0,0.8);
+        text-transform: uppercase;
+
+        @media (max-width: 480px) {
+          font-size: 1.5rem; // Reduced from 1.8rem
+        }
+      }
+
+      .beauty-intro {
+        font-size: var(--type-body-lg); 
+        color: #FFFFFF !important;
+        max-width: 750px;
+      }
+
+      .slide-label {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 0.75rem; // Reduced from 0.9rem
+        letter-spacing: 0.6em;
+        color: #FFFFFF !important; 
+        margin-bottom: 1.5rem; // Reduced from 2.5rem
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      h3 {
+        font-size: var(--type-heading-2); 
+        margin-bottom: 2rem; // Reduced from 3rem
+        color: #FFFFFF !important;
+      }
+
+      p {
+        font-family: var(--font-body);
+        font-size: clamp(0.85rem, 1.5vw, 1.4rem); // Reduced from clamp(0.95rem, 1.8vw, 1.4rem)
+        line-height: 1.6;
+        color: #FFFFFF !important; 
+        max-width: 600px;
+        font-weight: 300;
+      }
+
+      .beauty-cta-block {
+        margin-top: 5rem;
+      }
+    }
+  }
+
+  // 3. Smooth Exit Overlay
+  .beauty-exit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+}
+
+// CTA Global Styles within Beauty
+.btn-minimal-glass {
+  display: inline-block;
+  padding: 1.2rem 2.8rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+    transform: translateY(-5px);
+  }
+}
+
+.img-caption-overlay {
+  span {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes beauty-reveal-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
