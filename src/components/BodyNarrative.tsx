@@ -69,29 +69,29 @@ export const BodyNarrative = () => {
                 {/* BACKGROUND LAYERS - Switched to High-Fidelity Editorial Images */}
                 <div className="bg-video-layer" ref={bgVideo1Ref}>
                     <img 
-                        src="/images/portfolio/22.webp" 
-                        alt="Editorial 22" 
+                        src="/images/portfolio/23.webp?v=2024_HD" 
+                        alt="Editorial 23" 
                         className="body-bg-video" 
                     />
                     <div className="video-cinematic-overlay" />
                 </div>
 
-                <div className="bg-video-layer" ref={bgVideo2Ref}>
+                <div className="bg-video-layer" ref={bgVideo2Ref} style={{ opacity: 0 }}>
                     <img 
-                        src="/images/portfolio/23.webp" 
-                        alt="Editorial 23" 
-                        className="body-bg-video" 
-                    />
-                    <div className="video-cinematic-overlay heavy" />
-                </div>
-
-                <div className="bg-video-layer" ref={bgVideo3Ref}>
-                    <img 
-                        src="/images/portfolio/24.webp" 
+                        src="/images/portfolio/24.webp?v=2024_HD" 
                         alt="Editorial 24" 
                         className="body-bg-video" 
                     />
-                    <div className="video-cinematic-overlay heavy" />
+                    <div className="video-cinematic-overlay" />
+                </div>
+
+                <div className="bg-video-layer" ref={bgVideo3Ref} style={{ opacity: 0 }}>
+                    <img 
+                        src="/images/portfolio/22.webp?v=2024_HD" 
+                        alt="Editorial 22" 
+                        className="body-bg-video" 
+                    />
+                    <div className="video-cinematic-overlay" />
                 </div>
 
                 {/* FOREGROUND CONTENT BLOCKS */}
