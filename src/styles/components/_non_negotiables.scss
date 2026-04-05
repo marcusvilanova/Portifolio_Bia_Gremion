@@ -38,7 +38,7 @@
     margin: 0;
     font-weight: 600;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.4;
 
     &::before {
         content: '•';
@@ -60,9 +60,9 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 6vw;
-  padding: 5vh 0;
+  grid-template-columns: 1fr 1fr; // Balanced editorial grid
+  gap: 8vw;
+  padding: 4vh 0;
   overflow: visible;
 
   &.full-width-item {
@@ -72,19 +72,19 @@
   // EXPERT UI: Background Monumental Numbering Artifact
   .value-background-number {
     position: absolute;
-    top: -10%;
-    left: -5%;
+    top: -5%;
+    left: -2%;
     font-family: var(--font-heading);
-    font-size: clamp(20rem, 40vw, 45rem);
-    line-height: 1;
+    font-size: clamp(30rem, 50vw, 60rem);
+    line-height: 0.8;
     font-weight: 300;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(0,0,0,0.04);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.06);
     z-index: 0;
     pointer-events: none;
     user-select: none;
     will-change: transform;
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
   .value-content-side {
@@ -93,41 +93,42 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
+    text-align: left; // Forced left for magazine feel
 
     .content-inner {
-        max-width: 580px;
+        max-width: 620px;
     }
   }
 
   .value-label {
     display: block;
     font-family: var(--font-body);
-    font-size: 0.8rem;
-    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-weight: 600;
   }
 
   .value-title {
-    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     color: var(--color-primary);
     font-weight: 300;
-    margin-bottom: 2.5rem;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
   }
   
   .value-text {
-    font-size: clamp(0.9rem, 1.25vw, 1.1rem);
+    font-size: clamp(0.95rem, 1.25vw, 1.2rem);
     color: var(--color-text-light);
-    line-height: 1.8;
+    line-height: 1.7;
     margin: 0;
     font-weight: 300;
-    max-width: 90%;
+    max-width: 95%;
   }
 
   .value-media-side {
@@ -136,24 +137,24 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; // Align media to the start of its column
   }
 
   // Generic Framing for Media
   .editorial-media-frame {
     position: relative;
-    width: 90%;
-    height: 75vh;
+    width: 100%;
+    height: 70vh;
     will-change: transform;
     opacity: 1;
 
     &::after { // Decorative structural lines
         content: '';
         position: absolute;
-        top: 2rem;
-        left: 2rem;
-        right: -2rem;
-        bottom: -2rem;
+        top: 3rem;
+        left: 3rem;
+        right: -3rem;
+        bottom: -3rem;
         border: 1px solid rgba(0,0,0,0.03);
         z-index: -1;
         pointer-events: none;
@@ -162,24 +163,31 @@
 
   // Layout Specific: SOCIAL (Item 01)
   &.layout-social {
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1.1fr 0.9fr; // Content moves slightly right, Video takes left
     
+    .value-content-side {
+        order: 2;
+    }
+    .value-media-side {
+        order: 1;
+        justify-content: flex-end; // Video tucked against the center gap
+    }
+
     .editorial-media-frame {
         width: 100%;
-        max-width: 480px;
+        max-width: 550px; // Scaled up for better visibility
         height: auto;
         aspect-ratio: 9/16;
         background: #FFFFFF;
-        box-shadow: 0 50px 100px rgba(0,0,0,0.1);
-        padding: 6px;
+        box-shadow: 0 60px 120px rgba(0,0,0,0.12);
+        padding: 5px;
         border-radius: 4px;
 
-        // Digital Glass Overlay effect
         &::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
             z-index: 2;
             pointer-events: none;
         }
@@ -195,16 +203,17 @@
             width: 100%;
             height: 100%;
             object-fit: cover !important;
-            filter: contrast(1.02);
         }
     }
   }
 
   // Layout Specific: EDITORIAL (Item 02, 03, 04)
   &.layout-editorial {
+    grid-template-columns: 1fr 1fr;
+
     .editorial-media-frame {
         width: 100%;
-        height: 65vh;
+        height: 60vh;
         overflow: hidden;
         box-shadow: 0 40px 80px rgba(0,0,0,0.06);
 
@@ -253,43 +262,6 @@
         &:hover { opacity: 1; }
     }
   }
-
-  // Desktop Responsive Transitions
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    padding: 12vh 0;
-    gap: 8vh;
-    overflow-y: auto; // Allow scroll within item if needed on short viewports
-    
-    .value-background-number {
-        font-size: 40vw;
-        top: 5%;
-        left: 0;
-        opacity: 0.4;
-    }
-
-    .value-media-side {
-        order: -1;
-        padding-top: 5vh;
-    }
-
-    .editorial-media-frame {
-        width: 100%;
-        height: 55vh;
-        
-        &::after { display: none; }
-    }
-    
-    .value-content-side {
-        padding-bottom: 15vh;
-        text-align: center;
-        align-items: center;
-
-        .content-inner {
-            max-width: 100%;
-        }
-    }
-  }
 }
 
 .nn-cta {
@@ -318,14 +290,77 @@
   }
 }
 
-// CINEMATIC MOBILE OVERRIDES (Expert Level)
-@media (max-width: 768px) {
-  .nn-header {
-      padding-left: var(--spacing-md);
+// RESPONSIVE OVERRIDES (MAGAZINE FEEL ON ALL SCREENS)
+@media (max-width: 1200px) {
+    .value-item {
+        grid-template-columns: 1fr 1fr;
+        gap: 4vw;
+        
+        .value-title { font-size: 3.5rem; }
+    }
+}
+
+@media (max-width: 1024px) {
+  .nn-container {
+      padding-top: 12vh;
   }
 
   .value-item {
-      padding: 5vh var(--spacing-md);
+    grid-template-columns: 1fr;
+    padding: 8vh 0;
+    gap: 6vh;
+    overflow-y: auto;
+    
+    .value-background-number {
+        font-size: 45vw;
+        top: 2%;
+        opacity: 0.35;
+    }
+
+    .value-media-side {
+        order: -1;
+        justify-content: center !important;
+        padding-top: 2vh;
+    }
+
+    .editorial-media-frame {
+        width: 100%;
+        max-width: 400px !important; // Controlled size on mobile/tablet
+        height: auto;
+        
+        &::after { display: none; }
+    }
+    
+    .value-content-side {
+        padding-bottom: 10vh;
+        text-align: center !important;
+        align-items: center;
+
+        .content-inner {
+            max-width: 100%;
+        }
+        
+        .value-text {
+            max-width: 100%;
+        }
+    }
+    
+    &.layout-social {
+        .value-content-side { order: 2; }
+        .value-media-side { order: 1; }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nn-header {
+      padding-left: 0;
+      justify-content: center;
+      text-align: center;
+  }
+
+  .value-item {
+      padding: 0;
       
       .value-title {
           font-size: 2.2rem;
@@ -335,22 +370,15 @@
       .value-text {
           font-size: 0.9rem;
           line-height: 1.6;
-          max-width: 100%;
       }
 
       .editorial-media-frame {
-          height: 45vh;
+          height: auto;
           box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-      }
-      
-      &.layout-social .editorial-media-frame {
-          max-width: 85%;
-          margin: 0 auto;
       }
   }
 
   .nn-cta {
       justify-content: center;
-      padding-right: 0;
   }
 }
