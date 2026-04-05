@@ -26,7 +26,7 @@ export const Essence = () => {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=600%", // Bem longo para bastante tempo de leitura
+                    end: "+=300%", // Reduced from 600% for better rhythm
                     pin: true,
                     scrub: 1,
                 }
@@ -42,20 +42,20 @@ export const Essence = () => {
               .to(bgRef.current, { backgroundColor: '#EADCDD', duration: 1 }, "<")
               
             // 2. Escurece a tela conforme o scroll avança
-              .to(darkenRef.current, { opacity: 0.8, duration: 1.2 }, "+=0.3")
+            tl.to(darkenRef.current, { opacity: 0.8, duration: 1.2 }, "+=0.3")
 
             // 3. O Título entra com blur dissolve
-              .to(titleRef.current, { 
+            tl.to(titleRef.current, { 
                 autoAlpha: 1, 
                 filter: 'blur(0px)', 
                 scale: 1, 
                 duration: 1.5 
-              })
-              .to(titleRef.current, { 
+            })
+            .to(titleRef.current, { 
                 autoAlpha: 0, 
                 filter: 'blur(10px)', 
                 duration: 1 
-              }, "+=0.5");
+            }, "+=0.5");
 
             // 4. Parágrafos entram um por um com o mesmo efeito de foco
             const paragraphs = gsap.utils.toArray('.manifesto-text') as HTMLElement[];
@@ -92,13 +92,13 @@ export const Essence = () => {
             {/* O Fundo Que Transita Cores */}
             <div className="essence-tech-bg" ref={bgRef} />
             
-            {/* Imagem Cover Otimizada para o Rosto */}
             <img 
                 ref={imageRef} 
-                src="/f822a6e6-8529-454c-8c72-c82b8c210f30.png" 
-                alt="Bia Gremion Manifesto" 
-                className="essence-tech-image" 
-                loading="lazy"
+                src="/bia-essencia.png" 
+                alt="Bia Gremion Essência" 
+                className="essence-tech-image"
+                loading="eager"
+                decoding="async"
             />
 
             {/* Overlay Escuro para Contraste Textual */}

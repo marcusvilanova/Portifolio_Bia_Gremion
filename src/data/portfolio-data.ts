@@ -73,28 +73,28 @@ export const CAMPAIGNS: CampaignItem[] = [
         id: "pantene",
         brand: "PANTENE",
         title: "Campanha Nacional",
-        videoSrc: "/vídeo - campanha pantene.mp4",
+        videoSrc: "/video-pantene.mp4?v=2024_HD",
         link: null
     },
     {
         id: "mac",
         brand: "MAC COSMETICS",
         title: "Lançamento & Beauty",
-        videoSrc: "/Video campanha MAC.mp4",
+        videoSrc: "/video-mac-campanha.mp4?v=2024_HD",
         link: null
     },
     {
         id: "dove",
         brand: "DOVE",
         title: "Real Beauty Campaign",
-        videoSrc: "/Bia - Campanha DOVE.mp4",
+        videoSrc: "/video-dove.mp4?v=2024_HD",
         link: null
     },
     {
         id: "varejo",
         brand: "MODA VAREJO",
         title: "Divulgação Editorial Plus Size",
-        videoSrc: "/Video  - Divulgação de lojas plus size.mp4",
+        videoSrc: "/video-divulgacao-looks-2024.mp4?v=2024_HD",
         link: null
     }
 ];
@@ -121,7 +121,7 @@ export const VALUES: ValueItem[] = [
       number: "01",
       title: "Identificação que gera conversão.",
       text: "Com mais de 80 mil vozes orgânicas, minha relação com o público é baseada em espelhamento. As mulheres não apenas assistem; elas compram o que eu indico porque se identificam com a minha jornada e confiam na minha curadoria.",
-      videoSrc: "/Vídeo sobre os comentarios e engajamento nas redes sociais.mp4"
+      videoSrc: "/video-comentarios-engajamento.mp4"
     },
     {
       number: "02",
@@ -133,13 +133,13 @@ export const VALUES: ValueItem[] = [
       number: "03",
       title: "Comunicação e Estratégia de Marketing.",
       text: "Como graduanda em Marketing, entendo os bastidores da influência. Minha entrega une a criatividade da criadora com o embasamento técnico de quem sabe ler briefings e transformar tendências em resultados.",
-      imageSrc: "/Bia - maquiagem (2).png"
+      imageSrc: "/bia-maquiagem-2.png"
     },
     {
-      number: "04",
-      title: "ESTRATÉGIA E MERCADO PLUS SIZE",
-      text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra. Quando uma mulher vê um corpo como o dela sendo tratado com excelência em uma campanha, ela não compra apenas o produto: ela consome a sensação de pertencimento e dignidade. É por isso que a representatividade deixou de ser apenas uma pauta; hoje, é a estratégia de conexão e conversão mais inteligente que uma marca pode adotar.",
-      videoSrc: "/Vídeo - auto aceitação corpo inteiro.mp4"
+        number: "04",
+        title: "ESTRATÉGIA E MERCADO PLUS SIZE",
+        text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra. Quando uma mulher vê um corpo como o dela sendo tratado com excelência em uma campanha, ela não compra apenas o produto: ela consome a sensação de pertencimento e dignidade. É por isso que a representatividade deixou de ser apenas uma pauta; hoje, é a estratégia de conexão e conversão mais inteligente que uma marca pode adotar.",
+        imageSrc: "/images/portfolio/29.webp"
     }
 ];
 

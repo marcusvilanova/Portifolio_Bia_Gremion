@@ -2,50 +2,37 @@ import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } f
 
 interface LazyVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
     src: string;
+    poster?: string;
 }
 
-export const LazyVideo = forwardRef<HTMLVideoElement, LazyVideoProps>(({ src, ...props }, ref) => {
+export const LazyVideo = forwardRef<HTMLVideoElement, LazyVideoProps>(({ src, poster, ...props }, ref) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const observerRef = useRef<IntersectionObserver | null>(null);
 
-    // Expose the internal video element to the parent ref
     useImperativeHandle(ref, () => videoRef.current!);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsLoaded(true);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                rootMargin: '200px', // More generous margin
+        observerRef.current = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                setIsLoaded(true);
+                if (observerRef.current) observerRef.current.disconnect();
             }
-        );
+        }, { rootMargin: '200px' });
 
-        if (videoRef.current) {
-            observer.observe(videoRef.current);
-        }
-
+        if (videoRef.current) observerRef.current.observe(videoRef.current);
         return () => {
-            if (videoRef.current) {
-                observer.unobserve(videoRef.current);
-            }
-            observer.disconnect();
+            if (observerRef.current) observerRef.current.disconnect();
         };
     }, []);
 
     return (
-        <video
-            ref={videoRef}
-            src={isLoaded ? src : undefined}
-            {...props}
-        >
-            {isLoaded ? props.children : null}
-        </video>
+        <video 
+            ref={videoRef} 
+            src={isLoaded ? src : undefined} 
+            poster={poster}
+            {...props} 
+        />
     );
 });
 

@@ -27,7 +27,7 @@
   height: 120%; // Increased for safer parallax coverage
   object-fit: cover; 
   object-position: center;
-  filter: grayscale(100%) contrast(1.1);
+  filter: none; // Restored max quality and color
   opacity: 1;
 }
 

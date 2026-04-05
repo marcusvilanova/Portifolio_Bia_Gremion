@@ -1,3 +1,4 @@
+// src/styles/main.scss
 @use 'variables';
 @use 'base';
 @use 'typography';
@@ -14,70 +15,18 @@
 @use 'components/contact';
 @use 'components/beauty';
 @use 'components/metrics_showcase';
+@use 'components/preloader';
+@use 'components/portfolio';
+@use 'components/publis';
+@use 'components/press';
+@use 'components/non_negotiables';
+@use 'components/fashion_film';
+@use 'components/fashion_relation';
+@use 'components/archives';
+@use 'components/audio_controls';
+@use 'components/custom_cursor';
 
-// Specific page styles
+// Estilos globais (DEPOIS dos @use)
 html, body {
   background-color: var(--color-bg);
-}
-
-
-
-// Basic Hero styles for the App.tsx
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 0 var(--spacing-lg);
-  position: relative;
-  overflow: hidden;
-  
-  /* Abstract curvy background element */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    right: -5%;
-    width: 60vw;
-    height: 60vw;
-    background: linear-gradient(135deg, var(--color-primary-light), var(--color-bg));
-    border-radius: var(--radius-organic-1);
-    z-index: 0;
-    filter: blur(40px);
-    animation: morph 15s ease-in-out infinite;
-    opacity: 0.8;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 800px;
-  }
-  
-  .hero-title {
-    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--color-text);
-  }
-}
-
-// Keyframes for organic shapes
-@keyframes morph {
-  0% {
-    border-radius: var(--radius-organic-1);
-  }
-  50% {
-    border-radius: var(--radius-organic-2);
-  }
-  100% {
-    border-radius: var(--radius-organic-1);
-  }
 }

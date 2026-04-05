@@ -1,4 +1,5 @@
 @use '../variables';
+
 .hero-editorial {
   position: relative;
   width: 100vw;
@@ -7,9 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d0d0d; // Darker foundation for editorial look
+  background-color: var(--color-bg); // White background
 
-  // Multi-Image Sequence Container
   .hero-bg-container {
     position: absolute;
     top: -5%;
@@ -28,22 +28,12 @@
       object-fit: cover;
       object-position: center 30%;
       will-change: transform, opacity;
-      filter: contrast(1.05) saturate(0.9) brightness(0.85); // Cinematic mood
+      filter: contrast(1.02) saturate(0.95) brightness(1); // Brighter and natural
     }
 
-    .hero-vignette {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.5) 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
+    // Removed hero-vignette to maintain the white "clean" edge feeling
   }
 
-  // Sidebars and Credits
   .hero-sidebar {
     position: absolute;
     z-index: 12;
@@ -53,7 +43,7 @@
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 0.4em;
-    color: rgba(255,255,255,0.4);
+    color: rgba(0,0,0,0.3); // Adjusted for white bg
     display: flex;
     align-items: center;
     gap: 20px;
@@ -68,7 +58,7 @@
     .divider {
       width: 40px;
       height: 1px;
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(0,0,0,0.1);
     }
   }
 
@@ -76,9 +66,9 @@
     position: absolute;
     z-index: 12;
     font-family: var(--font-body);
-    font-size: 0.55rem; // Reduced from 0.65rem for more subtlety
-    letter-spacing: 0.25em; // Slightly wider for elegance
-    color: rgba(255,255,255,0.4);
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    color: rgba(0,0,0,0.3);
     pointer-events: none;
     text-transform: uppercase;
 
@@ -90,11 +80,11 @@
       
       @media (max-width: 768px) {
         top: auto;
-        bottom: 16vh; // Pushed up slightly
+        bottom: 16vh;
         right: var(--spacing-md);
         text-align: right;
         font-size: 0.4rem;
-        opacity: 0.4;
+        opacity: 0.6;
       }
     }
 
@@ -103,10 +93,10 @@
       left: var(--spacing-md);
       
       @media (max-width: 768px) {
-        bottom: 8vh; // Lowered to corner
+        bottom: 8vh;
         left: var(--spacing-md);
         font-size: 0.4rem;
-        opacity: 0.4;
+        opacity: 0.6;
       }
     }
   }
@@ -119,7 +109,6 @@
     display: flex;
     flex-direction: column;
 
-    // 1. Centered Name Branding
     .hero-header-name {
       text-align: center;
       margin-bottom: 2rem;
@@ -128,33 +117,34 @@
       justify-content: center;
 
       .editorial-title {
-        font-family: var(--font-heading); // Using standardized font
+        font-family: var(--font-heading);
         font-size: var(--type-heading-display); 
         line-height: 0.9;
         margin: 0;
         font-weight: 300;
         letter-spacing: -0.02em;
         text-transform: uppercase;
-        color: #FFFFFF; // Clean, solid white
-        text-shadow: 0 0 40px rgba(0,0,0,0.3);
+        color: var(--color-primary); // Default
+        text-shadow: 0 0 40px rgba(0,0,0,0.15); // Balanced shadow for both light/dark
         display: flex;
-        flex-wrap: nowrap; // Prevent splitting name on mobile
+        flex-wrap: nowrap;
         min-height: 1.2em;
         justify-content: center;
         width: 100%;
         padding: 0 var(--spacing-md);
+        transition: color 0.8s ease-in-out; // Smooth fallback
 
         @media (max-width: 1024px) {
           font-size: 10vw;
         }
 
         @media (max-width: 768px) {
-          font-size: 8.5vw; // Reduced for harmony
+          font-size: 8.5vw;
           line-height: 1.1;
         }
 
         @media (max-width: 480px) {
-          font-size: 9.5vw; // Refined scale
+          font-size: 9.5vw;
           letter-spacing: -0.01em;
           padding: 0 var(--spacing-sm);
         }
@@ -165,7 +155,6 @@
       }
     }
 
-    // 2. Main Centered Info
     .hero-center-block {
       margin-top: auto;
       margin-bottom: 15vh;
@@ -177,7 +166,7 @@
       padding: 0 var(--spacing-md);
 
       @media (max-width: 480px) {
-        margin-bottom: 25vh; // Push up away from marquee
+        margin-bottom: 25vh;
       }
     }
   }
@@ -189,13 +178,13 @@
     font-family: var(--font-body);
     font-size: 0.75rem;
     letter-spacing: 0.3em;
-    color: rgba(255,255,255,0.8);
+    color: rgba(0,0,0,0.7);
     text-transform: uppercase;
     
     .dot {
       width: 2px;
       height: 2px;
-      background-color: rgba(255,255,255,0.4);
+      background-color: rgba(0,0,0,0.2);
       border-radius: 50%;
     }
   }
@@ -209,17 +198,17 @@
         font-size: 0.75rem;
         letter-spacing: 0.3em;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-primary);
         text-decoration: none;
         padding: 18px 45px;
-        border: 1px solid rgba(255,255,255,0.15);
+        border: 1px solid rgba(0,0,0,0.1);
         border-radius: 50px;
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
-        background: rgba(255,255,255,0.03);
+        background: rgba(255,255,255,0.4);
         backdrop-filter: blur(10px);
-        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.03);
 
         &::before {
             content: '';
@@ -230,16 +219,16 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(255,255,255,0.1), 
+                rgba(0,0,0,0.05), 
                 transparent);
             transition: 0.6s;
         }
 
         &:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.4);
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.3);
             transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 
             &::before {
                 left: 100%;
@@ -254,23 +243,28 @@
     left: 0;
     width: 100%;
     padding: 1.5rem 0;
-    background-color: rgba(10,10,10,0.4);
+    background-color: rgba(255,255,255,0.7);
     backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(0,0,0,0.05);
     overflow: hidden;
     z-index: 15;
 
     &.watermark {
       .client-name {
-        opacity: 0.25;
-        color: #FFFFFF;
+        opacity: 0.4;
+        color: var(--color-primary);
         filter: grayscale(1);
       }
     }
     
     .marquee-track {
       display: flex;
-      width: fit-content;
+      width: max-content;
+      animation: marquee-scroll 35s linear infinite;
+
+      &:hover {
+        animation-play-state: paused;
+      }
     }
     
     .marquee-content {
@@ -278,6 +272,7 @@
       align-items: center;
       gap: 5rem;
       padding-right: 5rem; 
+      flex-shrink: 0;
     }
     
     .client-name {
@@ -297,7 +292,7 @@
   }
 }
 
-@keyframes laminated-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

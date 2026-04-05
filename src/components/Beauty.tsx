@@ -24,10 +24,10 @@ export const Beauty = () => {
             });
 
             // 2. Background Animation (Dynamic throughout the pin)
-            // Starts bright with the monumental title, then dims for details
+            // Starts bright with the monumental title, then dims and blurs for details
             tl.fromTo(backgroundRef.current,
-                { filter: 'brightness(0.9) scale(1.1)' },
-                { filter: 'brightness(0.2) scale(1.02)', duration: 2, ease: "power2.inOut" },
+                { filter: 'brightness(0.9) scale(1.1) blur(0px)' },
+                { filter: 'brightness(0.15) scale(1.05) blur(12px)', duration: 2, ease: "power2.inOut" },
                 0.2 // Starts shortly after initial reveal
             );
 

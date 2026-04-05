@@ -56,7 +56,7 @@ export const useScrollReveal = (scope?: React.RefObject<HTMLElement | null>) => 
           );
         }
       });
-    }, scope?.current || undefined);
+    }, scope || undefined);
 
     return () => ctx.revert();
   }, [scope]);

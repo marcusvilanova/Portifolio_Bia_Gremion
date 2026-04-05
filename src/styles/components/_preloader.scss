@@ -6,15 +6,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.25); // Cinematic dark glass
+  background-color: rgba(255, 255, 255, 0.9); // Editorial light glass
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  z-index: 100000; // Above everything
+  z-index: 100000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #FFFFFF;
+  color: var(--color-primary); // Use dark text
 }
 
 .preloader-silhouette {
@@ -33,6 +33,10 @@
     height: auto;
     overflow: visible;
   }
+
+  .monogram-path {
+    stroke: var(--color-primary); // Dark stroke
+  }
 }
 
 .preloader-brand {
@@ -45,6 +49,7 @@
   letter-spacing: 5px;
   text-transform: uppercase;
   opacity: 0.5;
+  color: var(--color-primary);
 }
 
 .preloader-interaction {
@@ -73,23 +78,23 @@
 }
 
 .enter-btn {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03); // Subtle dark glass
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12); // Dark border
   border-radius: 100px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 18px 45px;
-  color: #FFFFFF;
+  color: var(--color-primary); // Dark text
   position: relative;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 
-    0 15px 30px rgba(0,0,0,0.2),
-    inset 0 1px 1px rgba(255,255,255,0.1);
+    0 15px 30px rgba(0,0,0,0.05),
+    inset 0 1px 1px rgba(255,255,255,0.8);
 
   @media (max-width: 480px) {
     padding: 14px 35px;
@@ -106,7 +111,7 @@
     height: 200%;
     background: radial-gradient(
       circle at center,
-      rgba(255,255,255,0.08) 0%,
+      rgba(0,0,0,0.04) 0%,
       transparent 70%
     );
     opacity: 0;
@@ -123,9 +128,9 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,0.05),
-      rgba(255,255,255,0.2),
-      rgba(255,255,255,0.05),
+      rgba(0,0,0,0.02),
+      rgba(0,0,0,0.08),
+      rgba(0,0,0,0.02),
       transparent
     );
     transform: skewX(-20deg);
@@ -133,19 +138,15 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.3);
     transform: translate(0, -5px) scale(1.02);
     box-shadow: 
-        0 30px 60px rgba(0,0,0,0.4),
-        inset 0 1px 2px rgba(255,255,255,0.2);
+        0 30px 60px rgba(0,0,0,0.1),
+        inset 0 1px 2px rgba(255,255,255,0.4);
 
     &::before {
         opacity: 1;
-    }
-    
-    .btn-label {
-        letter-spacing: 0.6em;
     }
   }
 

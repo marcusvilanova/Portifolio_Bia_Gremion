@@ -1,9 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap';
-import { LazyVideo } from './common/LazyVideo';
 import '../styles/components/_body_narrative.scss';
-
-// GSAP registration is now handled in ../lib/gsap.ts
 
 export const BodyNarrative = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -18,9 +15,6 @@ export const BodyNarrative = () => {
     const content1Ref = useRef<HTMLDivElement>(null);
     const content2Ref = useRef<HTMLDivElement>(null);
     const content3Ref = useRef<HTMLDivElement>(null);
-    
-    const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-    const audioRef = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -33,7 +27,7 @@ export const BodyNarrative = () => {
                 scrollTrigger: {
                     trigger: pinnedContainerRef.current,
                     start: 'top top',
-                    end: '+=700%', // Ample space for the full story
+                    end: '+=400%', // Reduced from 700% for better rhythm
                     pin: true,
                     scrub: 1,
                     anticipatePin: 1,
@@ -68,68 +62,34 @@ export const BodyNarrative = () => {
         return () => ctx.revert();
     }, []);
 
-    const toggleMusic = () => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        if (isMusicPlaying) {
-            // Fade out smoothly
-            gsap.to(audio, {
-                volume: 0,
-                duration: 1.5,
-                onComplete: () => {
-                    audio.pause();
-                    setIsMusicPlaying(false);
-                }
-            });
-        } else {
-            // Start silent and fade in
-            audio.volume = 0;
-            audio.play().catch(() => {});
-            setIsMusicPlaying(true);
-            
-            gsap.to(audio, {
-                volume: 0.4,
-                duration: 4,
-                ease: "power1.in"
-            });
-        }
-    };
-
-
     return (
         <section className="body-narrative" ref={sectionRef} id="corpo">
-            <audio ref={audioRef} loop>
-                <source src="/audio/Emmy Meli - I AM WOMAN (Lyrics) - The Vibe Guide (youtube).mp3" type="audio/mp3" />
-            </audio>
-
-
             <div className="video-fullscreen-narrative" ref={pinnedContainerRef}>
 
-                {/* BACKGROUND LAYERS */}
+                {/* BACKGROUND LAYERS - Switched to High-Fidelity Editorial Images */}
                 <div className="bg-video-layer" ref={bgVideo1Ref}>
-                    <LazyVideo
-                        className="body-bg-video"
-                        autoPlay loop muted playsInline
-                        src="/Vídeo - destaque para o corpo como uma escultura.mp4"
+                    <img 
+                        src="/images/portfolio/22.webp" 
+                        alt="Editorial 22" 
+                        className="body-bg-video" 
                     />
                     <div className="video-cinematic-overlay" />
                 </div>
 
                 <div className="bg-video-layer" ref={bgVideo2Ref}>
-                    <LazyVideo
-                        className="body-bg-video"
-                        autoPlay loop muted playsInline
-                        src="/Video - Mensagem Motivacional sobre aceitação.mp4"
+                    <img 
+                        src="/images/portfolio/23.webp" 
+                        alt="Editorial 23" 
+                        className="body-bg-video" 
                     />
                     <div className="video-cinematic-overlay heavy" />
                 </div>
 
                 <div className="bg-video-layer" ref={bgVideo3Ref}>
-                    <LazyVideo
-                        className="body-bg-video"
-                        autoPlay loop muted playsInline
-                        src="/Bia - vídeo de autoaceitação, muito feliz no carnaval.mp4"
+                    <img 
+                        src="/images/portfolio/24.webp" 
+                        alt="Editorial 24" 
+                        className="body-bg-video" 
                     />
                     <div className="video-cinematic-overlay heavy" />
                 </div>
@@ -141,9 +101,6 @@ export const BodyNarrative = () => {
                     <div className="content-block" ref={content1Ref}>
                         <span className="phase-label">02 · Minha Relação com o Corpo</span>
                         <h2 className="cinematic-title">NOSSO CORPO<br/>É NOSSA CASA.</h2>
-                        <button className="music-toggle-minimal" onClick={toggleMusic}>
-                            {isMusicPlaying ? '⏸ PAUSE' : '▶ PLAY'} — Emmy Meli, I Am Woman
-                        </button>
                     </div>
 
                     {/* Block 2 */}

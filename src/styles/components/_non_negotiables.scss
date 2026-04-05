@@ -99,7 +99,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 1vh;
+    padding-top: 2vh; // Unified with media side for perfect alignment
     padding-bottom: 4vh;
   }
 
@@ -129,15 +129,49 @@
     width: 100%;
     margin-top: 2vh;
 
-    .highlights-title {
-       font-family: var(--font-heading);
-       font-size: 0.45rem;
-       letter-spacing: 0.15em;
-       margin-bottom: 1.5rem;
-       opacity: 0.3;
-       color: var(--color-primary);
-       text-transform: uppercase;
-    }
+      .cinematic-title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.5rem, 8vw, 6.5rem); 
+        color: #FFFFFF; // High contrast white
+        line-height: 1;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        margin: 0;
+        text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+
+        @media (max-width: 480px) {
+          font-size: 2rem;
+        }
+      }
+
+      .cinematic-quote {
+        font-family: var(--font-heading);
+        font-size: clamp(1.1rem, 3.5vw, 2.5rem); 
+        color: #FFFFFF; // High contrast white
+        line-height: 1.2;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 2rem;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      }
+
+      .cinematic-copy {
+        font-family: var(--font-heading);
+        font-size: clamp(0.75rem, 1vw, 0.9rem);
+        line-height: 2;
+        color: rgba(255, 255, 255, 0.9); // High contrast white
+        max-width: 700px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+
+        strong {
+          color: #FFFFFF;
+          font-weight: 600;
+        }
+      }
   }
 
   // Brands Wall Styling
@@ -242,7 +276,7 @@
     position: relative;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start; // Level with Top of title
     justify-content: center; // Center the video in its column
     overflow: visible; // Allow shadow to bleed
     padding: 2vh 0;

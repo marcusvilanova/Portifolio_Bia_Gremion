@@ -51,9 +51,9 @@ export const FashionFilm = () => {
                     loop 
                     muted 
                     playsInline
-                    poster="/Bia sorrindo.png"
+                    poster="/poster-bia-video-5.webp"
                 >
-                    <source src="/BIA VÍDEO 5.mp4" type="video/mp4" />
+                    <source src="/video-final-fashion-film.mp4?v=2024_HD" type="video/mp4" />
                 </video>
                 
                 {/* Text overlay removed as requested */}

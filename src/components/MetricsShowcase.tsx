@@ -5,19 +5,19 @@ import '../styles/components/_metrics_showcase.scss';
 const METRIC_DATA = [
     {
         id: 1,
-        image: "/images/portfolio/Métricas 1.webp",
+        image: "/images/portfolio/metrics-1.webp",
         phrase: "CONEXÃO REAL, IMPACTO MENSURÁVEL",
         bgColor: "#1a1a1a" // Deep Black for professional contrast
     },
     {
         id: 2,
-        image: "/images/portfolio/Métricas 2.webp",
+        image: "/images/portfolio/metrics-2.webp",
         phrase: "AUDIÊNCIA QUALIFICADA E ENGAJADA",
         bgColor: "#A32638" // Bia's Signature Red
     },
     {
         id: 3,
-        image: "/images/portfolio/Métricas 3.webp",
+        image: "/images/portfolio/metrics-3.webp",
         phrase: "REPRESENTATIVIDADE QUE CONVERTE",
         bgColor: "#2d3436" // Sophisticated Graphite
     }

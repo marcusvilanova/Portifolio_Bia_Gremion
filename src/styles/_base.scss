@@ -8,16 +8,16 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
-  // Organic custom scrollbar
+  scroll-behavior: auto !important; // Force disable native scroll to protect Lenis
+  
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
   &::-webkit-scrollbar-track {
-    background: var(--color-bg);
+    background: #0d0d0d;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-secondary);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
   }
 }
@@ -49,4 +49,14 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+}
+
+// Global Accessibility: prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

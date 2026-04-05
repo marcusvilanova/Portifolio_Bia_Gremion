@@ -2,9 +2,9 @@ import { useAudio } from '../../context/AudioContext';
 import '../../styles/components/_audio_controls.scss';
 
 export const AudioControls = () => {
-  const { isMuted, toggleMute, isPlaying } = useAudio();
+  const { isMuted, toggleMute, isPlaying, isAvailable } = useAudio();
 
-  if (!isPlaying) return null;
+  if (!isAvailable || !isPlaying) return null;
 
   return (
     <div className="audio-controls-wrap reveal-on-scroll">
