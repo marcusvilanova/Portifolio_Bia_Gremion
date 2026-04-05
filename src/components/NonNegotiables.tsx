@@ -116,76 +116,77 @@ export const NonNegotiables = () => {
             const items = stackRef.current?.querySelectorAll('.value-item');
             if (!items || items.length === 0) return;
 
-            // Initial state: hide all items and their layers for a "Viscous Reveal"
+            // Initial state: hide all items and their layers
             items.forEach((item) => {
                 const number = item.querySelector('.value-background-number');
                 const content = item.querySelector('.content-inner');
                 const title = item.querySelector('.value-title');
-                const media = item.querySelector('.editorial-media-frame');
+                const highlight = item.querySelector('.highlight-artifact');
 
                 gsap.set(item, { autoAlpha: 0 });
-                gsap.set(number, { autoAlpha: 0, scale: 0.85, yPercent: 10 });
-                gsap.set(content, { autoAlpha: 0, yPercent: 20 });
-                gsap.set(title, { clipPath: 'inset(100% 0 0 0)' });
-                gsap.set(media, { autoAlpha: 0, scale: 1.1, skewX: 8, xPercent: 10 });
+                gsap.set(number, { autoAlpha: 0, scale: 0.9 });
+                gsap.set(content, { autoAlpha: 0, yPercent: 15 });
+                gsap.set(title, { autoAlpha: 0, yPercent: 30 });
+                if (highlight) gsap.set(highlight, { autoAlpha: 0, yPercent: 20 });
             });
 
-            // Show first item immediately with its initial state
+            // Show first item immediately
             const first = items[0];
             gsap.set(first, { autoAlpha: 1 });
-            gsap.set(first.querySelector('.value-background-number'), { autoAlpha: 0.8, scale: 1, yPercent: 0 });
+            gsap.set(first.querySelector('.value-background-number'), { autoAlpha: 0.7, scale: 1 });
             gsap.set(first.querySelector('.content-inner'), { autoAlpha: 1, yPercent: 0 });
-            gsap.set(first.querySelector('.value-title'), { clipPath: 'inset(0% 0 0 0)' });
-            gsap.set(first.querySelector('.editorial-media-frame'), { autoAlpha: 1, scale: 1, skewX: 0, xPercent: 0 });
+            gsap.set(first.querySelector('.value-title'), { autoAlpha: 1, yPercent: 0 });
+            const firstHL = first.querySelector('.highlight-artifact');
+            if (firstHL) gsap.set(firstHL, { autoAlpha: 1, yPercent: 0 });
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: `+=${items.length * 300}%`, // Deeper scroll for viscous feel
+                    end: `+=${items.length * 250}%`,
                     pin: true,
-                    scrub: 1.2, // Smoother, more "heavy" scrub
+                    scrub: 1.2,
                     anticipatePin: 1,
                 }
             });
 
-            // EXPERT MOTION: Layered Parallax Sequence
+            // Layered Parallax Sequence
             items.forEach((item, index) => {
                 if (index === 0) {
-                    tl.to({}, { duration: 2 }); // Initial hold
+                    tl.to({}, { duration: 2 }); // hold
                     return;
-                };
+                }
 
                 const prevItem = items[index - 1];
-                const labelEnter = `step-enter-${index}`;
+                const label = `step-${index}`;
                 
-                // 1. EXIT: Prev Item (Layers disperse in parallax)
-                tl.to(prevItem.querySelector('.value-background-number'), { autoAlpha: 0, yPercent: -20, scale: 1.1, duration: 1.5 }, labelEnter)
-                  .to(prevItem.querySelector('.content-inner'), { autoAlpha: 0, yPercent: -30, duration: 1 }, labelEnter)
-                  .to(prevItem.querySelector('.editorial-media-frame'), { autoAlpha: 0, xPercent: -15, scale: 0.9, skewX: -5, duration: 1.5 }, labelEnter)
-                  .to(prevItem, { autoAlpha: 0, duration: 0.5 }, `${labelEnter}+=1`) // Clean clip
+                // EXIT previous
+                tl.to(prevItem.querySelector('.value-background-number'), { autoAlpha: 0, yPercent: -15, duration: 1.2 }, label)
+                  .to(prevItem.querySelector('.highlight-artifact'), { autoAlpha: 0, yPercent: -20, duration: 1 }, label)
+                  .to(prevItem.querySelector('.content-inner'), { autoAlpha: 0, yPercent: -20, duration: 1 }, label)
+                  .to(prevItem, { autoAlpha: 0, duration: 0.3 }, `${label}+=0.9`)
                 
-                // 2. ENTER: Current Item (Slices and skewed reveals)
-                  .to(item, { autoAlpha: 1, duration: 0.1 }, labelEnter) // Reveal base
+                // ENTER current
+                  .to(item, { autoAlpha: 1, duration: 0.1 }, label)
                   .to(item.querySelector('.value-background-number'), { 
-                      autoAlpha: 0.8, scale: 1, yPercent: 0, 
-                      duration: 2, ease: "power2.out" 
-                  }, labelEnter)
-                  .to(item.querySelector('.editorial-media-frame'), { 
-                      autoAlpha: 1, scale: 1, skewX: 0, xPercent: 0, 
-                      duration: 2, ease: "expo.out" 
-                  }, `${labelEnter}+=0.2`)
+                      autoAlpha: 0.7, scale: 1, yPercent: 0, 
+                      duration: 1.8, ease: "power2.out" 
+                  }, label)
+                  .to(item.querySelector('.highlight-artifact'), { 
+                      autoAlpha: 1, yPercent: 0, 
+                      duration: 1.5, ease: "power3.out" 
+                  }, `${label}+=0.2`)
                   .to(item.querySelector('.value-title'), { 
-                      clipPath: 'inset(0% 0 0 0)', 
-                      duration: 1.5, ease: "power4.out" 
-                  }, `${labelEnter}+=0.5`)
+                      autoAlpha: 1, yPercent: 0, 
+                      duration: 1.2, ease: "power3.out" 
+                  }, `${label}+=0.4`)
                   .to(item.querySelector('.content-inner'), { 
                       autoAlpha: 1, yPercent: 0, 
-                      duration: 1.5, ease: "power2.out" 
-                  }, `${labelEnter}+=0.8`)
+                      duration: 1.2, ease: "power2.out" 
+                  }, `${label}+=0.6`)
                 
-                // 3. HOLD: Viscous reading time
-                  .to({}, { duration: 3 });
+                // HOLD
+                  .to({}, { duration: 2.5 });
             });
 
         }, sectionRef);
