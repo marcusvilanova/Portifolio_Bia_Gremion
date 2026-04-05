@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '../lib/gsap';
-import { LazyVideo } from './common/LazyVideo';
 import '../styles/components/_non_negotiables.scss';
 
 import { VALUES } from '../data/portfolio-data';
