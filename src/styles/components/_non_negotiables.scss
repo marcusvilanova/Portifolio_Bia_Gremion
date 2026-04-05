@@ -85,31 +85,35 @@
     position: relative;
     z-index: 5;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 8vw;
+    grid-template-columns: 1.2fr 0.8fr; // Adjusted for better text-to-data balance
+    gap: 5vw;
     height: 100%;
     align-items: center;
+    overflow: visible; // Prevent clipping of monumental stats
   }
 
   .highlight-column {
     display: flex;
     justify-content: flex-end;
     text-align: right;
+    overflow: visible;
 
     .highlight-artifact {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        position: relative;
     }
 
     .huge-stat {
         font-family: var(--font-heading);
-        font-size: clamp(6rem, 15vw, 16rem);
+        font-size: clamp(5rem, 11vw, 13rem); // Reduced from 16rem to prevent "ESTRATÉGIA" from cutting off
         line-height: 0.8;
         font-weight: 400;
         letter-spacing: -0.04em;
         color: var(--color-primary);
         text-transform: uppercase;
+        white-space: nowrap; // Keep monolith as a single block
     }
 
     .stat-label {
