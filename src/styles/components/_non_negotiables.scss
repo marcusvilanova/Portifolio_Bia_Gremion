@@ -319,62 +319,162 @@
   }
 }
 
-// ──────────── RESPONSIVE ────────────
+// ──────────── TABLET (≤ 1024px) ────────────
 @media (max-width: 1024px) {
   .nn-container {
-    padding-top: 10vh;
+    padding: 8vh 6vw 0;
   }
 
   .value-item {
     .value-background-number {
       font-size: 40vw;
-      opacity: 0.3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      opacity: 0.25;
     }
 
     .value-monolith-grid {
-      grid-template-columns: 1fr;
-      gap: 3vh;
+      grid-template-columns: 1fr; // stack
+      gap: 0;
       text-align: center;
     }
 
     .highlight-column {
       justify-content: center;
       height: auto;
-      padding: 2vh 0;
+      padding: 4vh 0 2vh;
+      padding-right: 0; // override desktop
+
+      .highlight-artifact {
+        align-items: center; // override flex-end
+        width: auto;
+      }
 
       .huge-stat {
-        font-size: 22vw;
+        font-size: 18vw;
+        text-align: center; // override right-align
+        width: auto;
+      }
+
+      .stat-label {
+        margin-top: 0.8rem;
       }
     }
 
     .content-column {
       border-left: none;
       padding-left: 0;
+      padding-top: 2.5vh;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
       align-items: center;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      padding-top: 3vh;
       height: auto;
+      overflow-y: auto;
+
+      .content-inner {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+
+    .value-label {
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .value-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .value-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
   }
 }
 
+// ──────────── PHONE (≤ 768px) ────────────
 @media (max-width: 768px) {
+  .nn-container {
+    padding: 6vh 5vw 0;
+  }
+
   .nn-header {
     text-align: center;
     justify-content: center;
     display: flex;
+    padding-bottom: 1rem;
   }
 
   .value-item {
-    .huge-stat {
-      font-size: 18vw;
+    .value-background-number {
+      font-size: 50vw;
     }
+
+    .highlight-column {
+      padding: 3vh 0 1.5vh;
+
+      .huge-stat {
+        font-size: 16vw;
+        line-height: 0.9;
+      }
+
+      .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+      }
+    }
+
+    .content-column {
+      padding-top: 2vh;
+    }
+
+    .value-label {
+      font-size: 0.7rem;
+    }
+
     .value-title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .value-text {
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
   }
 
   .nn-cta {
     justify-content: center;
+
+    .cta-link {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+// ──────────── SMALL PHONE (≤ 480px) ────────────
+@media (max-width: 480px) {
+  .nn-container {
+    padding: 5vh 4vw 0;
+  }
+
+  .value-item {
+    .highlight-column {
+      padding: 2vh 0 1vh;
+
+      .huge-stat {
+        font-size: 14vw;
+      }
+    }
+
+    .value-title {
+      font-size: 1.2rem;
+    }
+
+    .value-text {
+      font-size: 0.8rem;
+    }
   }
 }
