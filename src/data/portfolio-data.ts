@@ -143,24 +143,7 @@ export const VALUES: ValueItem[] = [
         title: "Mercado Plus Size.",
         highlight: "R$ 10B",
         subHighlight: "Movimentação Anual",
-        text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra.",
-        isDemographics: true,
-        demographics: {
-            brands: ["DOVE", "PANTENE", "MAC", "SKALA", "VULT", "UBER", "CONVERSE", "SPOTIFY"],
-            reach: [
-                { label: "MENSAL", value: "850K" },
-                { label: "ENGAL", value: "4.2%" }
-            ],
-            gender: [
-                { label: "Feminino", value: "92%" },
-                { label: "Masculino", value: "8%" }
-            ],
-            age: [
-                { label: "18-24", value: "28%" },
-                { label: "25-34", value: "46%" },
-                { label: "35-44", value: "15%" }
-            ]
-        }
+        text: "Mais de 60% da população adulta brasileira veste tamanhos acima do padrão convencional. O mercado plus size no Brasil movimenta quase R$ 10 bilhões por ano. Existe uma demanda gigantesca e reprimida por numerações que vão além do 46, chegando ao 60+. Ignorar esse número é ignorar a maior fatia do país. Para a consumidora plus size, a identificação é o gatilho da compra."
     }
 ];
 
