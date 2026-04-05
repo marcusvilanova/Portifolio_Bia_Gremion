@@ -104,11 +104,11 @@
   .value-label {
     display: block;
     font-family: var(--font-body);
-    font-size: 1.4rem; // Increased from 0.8rem for commanding presence
-    letter-spacing: 0.45em; // More tracking for high-end look
+    font-size: 1.4rem; // Command presence
+    letter-spacing: 0.45em;
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 1.8rem;
+    margin-bottom: 0.8rem; // Tightened from 1.8rem
     font-weight: 600;
   }
 
@@ -116,7 +116,7 @@
     font-size: clamp(2.5rem, 6vw, 5rem);
     color: var(--color-primary);
     font-weight: 300;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem; // Tightened from 3rem
     line-height: 0.9;
     letter-spacing: -0.04em;
     text-transform: uppercase;
@@ -140,7 +140,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start; // Align media to the start of its column
+    justify-content: flex-start;
   }
 
   // Generic Framing for Media
@@ -150,7 +150,7 @@
     height: 70vh;
     will-change: transform, opacity;
     opacity: 1;
-    transition: none !important; // Prevent CSS conflicts with GSAP Scrub
+    transition: none !important;
 
     &::after { // Decorative structural lines
         content: '';
@@ -167,25 +167,26 @@
 
   // Layout Specific: SOCIAL (Item 01)
   &.layout-social {
-    grid-template-columns: 1.1fr 0.9fr; // Content moves slightly right, Video takes left
+    grid-template-columns: 1.1fr 0.9fr;
     
     .value-content-side {
         order: 2;
     }
     .value-media-side {
         order: 1;
-        justify-content: flex-end; // Video tucked against the center gap
+        justify-content: flex-end;
     }
 
     .editorial-media-frame {
         width: 100%;
-        max-width: 550px; // Scaled up for better visibility
+        max-width: 550px;
         height: auto;
         aspect-ratio: 9/16;
-        background: #FFFFFF;
-        box-shadow: 0 60px 120px rgba(0,0,0,0.12);
-        padding: 5px;
-        border-radius: 4px;
+        background: transparent; // Removed white background
+        box-shadow: none; // Removed box shadow
+        padding: 0; // Removed extra padding
+        border-radius: 0; // Removed border radius
+    }
 
         &::before {
             content: '';
