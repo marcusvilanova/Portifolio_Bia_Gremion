@@ -94,24 +94,30 @@
   .highlight-column {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end; // push content toward the divider line
     height: 100%;
+    padding-right: 2vw;
 
     .highlight-artifact {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-end; // right-align to sit against the divider
+      width: 100%;
+      max-width: 100%; // never exceed column
     }
 
     .huge-stat {
       font-family: var(--font-heading);
       font-size: clamp(5rem, 12vw, 14rem);
-      line-height: 0.9;
+      line-height: 0.85;
       font-weight: 400;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       color: var(--color-primary);
       text-transform: uppercase;
+      text-align: right; // align to the divider
+      overflow-wrap: break-word;
+      word-break: break-word;
+      width: 100%;
     }
 
     .stat-label {
@@ -120,7 +126,7 @@
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--color-accent);
-      margin-top: 1.2rem;
+      margin-top: 1.5rem;
       font-weight: 600;
       opacity: 0.7;
     }
