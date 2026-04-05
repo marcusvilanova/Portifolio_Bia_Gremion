@@ -104,11 +104,11 @@
   .value-label {
     display: block;
     font-family: var(--font-body);
-    font-size: 0.75rem;
-    letter-spacing: 0.4em;
+    font-size: 1.4rem; // Increased from 0.8rem for commanding presence
+    letter-spacing: 0.45em; // More tracking for high-end look
     text-transform: uppercase;
     color: var(--color-accent);
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
     font-weight: 600;
   }
 
