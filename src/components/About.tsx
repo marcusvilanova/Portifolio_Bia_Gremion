@@ -119,7 +119,7 @@ export const About = () => {
 
                 <div className="editorial-image-content reveal-on-scroll">
                     <img 
-                        src="/images/portfolio/22.jpeg" 
+                        src="/images/portfolio/22.webp" 
                         alt="Bia Gremion Headshot" 
                         className="editorial-portrait" 
                         loading="lazy"

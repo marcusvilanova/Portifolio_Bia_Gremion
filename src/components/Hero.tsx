@@ -10,13 +10,13 @@ const CLIENTS = [
 ];
 
 const HERO_IMAGES = [
-    "/images/portfolio/22.jpeg",
-    "/images/portfolio/24.jpeg",
-    "/images/portfolio/9.jpeg",
-    "/images/portfolio/33.jpeg",
-    "/images/portfolio/15.jpeg",
-    "/images/portfolio/21.jpeg",
-    "/images/portfolio/16.jpeg",
+    "/images/portfolio/22.webp",
+    "/images/portfolio/24.webp",
+    "/images/portfolio/9.webp",
+    "/images/portfolio/33.webp",
+    "/images/portfolio/15.webp",
+    "/images/portfolio/21.webp",
+    "/images/portfolio/16.webp",
     "/Bia -maquiagem.png",
     "/Bia - Maquiada destaque para o rosto.png"
 ];

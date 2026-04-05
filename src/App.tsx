@@ -59,7 +59,7 @@ function App() {
             
             <ParallaxDivider 
               type="image" 
-              src="/images/portfolio/20.jpeg" 
+              src="/images/portfolio/20.webp" 
               title="AS CAMPANHAS." 
               subtitle="PROVA SOCIAL & TRABALHOS" 
             />

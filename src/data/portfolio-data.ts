@@ -127,7 +127,7 @@ export const VALUES: ValueItem[] = [
       number: "02",
       title: "DOMÍNIO TÉCNICO & CURADORIA",
       text: "Formada pela Escola Madre, trago o olhar técnico da maquiagem para cada publis de skincare, beleza e acessórios. Entendo o produto, a aplicação e o resultado visual exigido pelo mercado premium.",
-      imageSrc: "/images/portfolio/44.jpeg"
+      imageSrc: "/images/portfolio/44.webp"
     },
     {
       number: "03",
@@ -157,7 +157,7 @@ export const PORTFOLIO_IMAGES: PortfolioMedia[] = Array.from({ length: 82 }, (_,
     return {
         id: `photo-${idNum}`,
         type: 'image',
-        src: `/images/portfolio/${idNum}.jpeg`,
+        src: `/images/portfolio/${idNum}.webp`,
         alt: `Bia Gremion Portfolio Photo ${idNum}`,
         category
     };

@@ -18,7 +18,7 @@ export const FashionRelation = () => {
                 <div className="relation-grid">
                     <div className="relation-image reveal-on-scroll">
                         <img 
-                            src="/images/portfolio/76.jpeg" 
+                            src="/images/portfolio/76.webp" 
                             alt="Bia Gremion Fashion" 
                             className="fashion-img" 
                             loading="lazy"

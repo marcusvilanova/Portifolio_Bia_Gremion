@@ -77,7 +77,7 @@ export const Beauty = () => {
             <div className="beauty-bg-wrapper">
                 <img 
                     ref={backgroundRef}
-                    src="/images/portfolio/43.jpeg" 
+                    src="/images/portfolio/43.webp" 
                     alt="Bia Gremion - Beleza, Arte e Técnica" 
                     className="beauty-full-image" 
                 />
