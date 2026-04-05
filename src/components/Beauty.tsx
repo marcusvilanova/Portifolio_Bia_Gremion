@@ -24,11 +24,11 @@ export const Beauty = () => {
             });
 
             // 2. Background Animation (Dynamic throughout the pin)
-            // Starts bright with the monumental title, then dims and blurs for details
+            // Starts already dark and blurry to prioritize monumental title legibility
             tl.fromTo(backgroundRef.current,
-                { filter: 'brightness(0.9) scale(1.1) blur(0px)' },
-                { filter: 'brightness(0.15) scale(1.05) blur(12px)', duration: 2, ease: "power2.inOut" },
-                0.2 // Starts shortly after initial reveal
+                { filter: 'brightness(0.4) scale(1.1) blur(15px)' },
+                { filter: 'brightness(0.1) scale(1.05) blur(25px)', duration: 2, ease: "power2.inOut" },
+                0 // Starts immediately to ensure legibility from frame zero
             );
 
             // 3. Slides Sequence
